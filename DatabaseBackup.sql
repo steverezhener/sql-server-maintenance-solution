@@ -881,8 +881,8 @@ BEGIN
   END
 
   ----------------------------------------------------------------------------------------------------
-
-  IF NOT EXISTS (SELECT * FROM @Errors WHERE Severity >= 16) AND @DirectoryCheck = 'Y'
+  -- [master].dbo.xp_fileexist needs a sysadmin permission
+  IF NOT EXISTS (SELECT * FROM @Errors WHERE Severity >= 16) AND @DirectoryCheck = 'Y' AND IS_SRVROLEMEMBER ( 'sysadmin',SUSER_SNAME()) =1
   BEGIN
     WHILE (1 = 1)
     BEGIN
