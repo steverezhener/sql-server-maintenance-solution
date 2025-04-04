@@ -76,7 +76,7 @@ BEGIN
 
 		SET @DatabaseList = 'USER_DATABASES'
 		IF ISNULL(@excludedatabaselist,'')!='' 			SET @DatabaseList = CONCAT('USER_DATABASES,',@excludedatabaselist)
-		IF ISNULL(@OtherSystemDatabases,'')!=''			SET @DatabaseList = @OtherSystemDatabases		--IF @@SERVERNAME!='LVIOASRESSQL001'
+		IF ISNULL(@OtherSystemDatabases,'')!=''			SET @DatabaseList = @OtherSystemDatabases		
 		IF ISNULL(@specific_database_name,'')!='' 		SET @DatabaseList = @specific_database_name
 
 		IF CHARINDEX(@Edition,'Standard',1) >0 AND CHARINDEX(@Edition,'Developer',1) >0 AND CHARINDEX(@Edition,'Enterprise',1) >0
