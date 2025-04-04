@@ -13,16 +13,16 @@ GO
 -- EXEC DBA.bestpractices.usp_apply_database_xml_compression @debug_only='Y'
 -- =============================================
 CREATE OR ALTER                 PROCEDURE [bestpractices].[usp_apply_database_xml_compression]
-	@top_tables								            INT					    = 5
-	,@include_database_list					      NVARCHAR(MAX)		= NULL	--overwrites configuration table value	(use commas with no spaces)
-	,@exclude_database_list					      NVARCHAR(MAX)		= NULL	--overwrites configuration table value	(use commas with no spaces)
-	,@read_write_mode						          VARCHAR(25)			= 'READ_WRITE'
-	,@exclude_table							          VARCHAR(100)		= NULL	
-	,@recommended_database_option_name		VARCHAR(50)			= 'XML_COMPRESSION'
-	,@recommended_value						        CHAR(2)				  = 'ON'
-	,@command_type							          VARCHAR(50)			= 'ALTER TABLE (XML_COMPRESSION=ON)'
-	,@log_to_table							          CHAR(1)				  = 'Y'
-	,@debug_only							            CHAR(1)				  = 'N'
+	@top_tables					INT					    = 5
+	,@include_database_list				NVARCHAR(MAX)		= NULL	--overwrites configuration table value	(use commas with no spaces)
+	,@exclude_database_list				NVARCHAR(MAX)		= NULL	--overwrites configuration table value	(use commas with no spaces)
+	,@read_write_mode				VARCHAR(25)		= 'READ_WRITE'
+	,@exclude_table					VARCHAR(100)		= NULL	
+	,@recommended_database_option_name		VARCHAR(50)		= 'XML_COMPRESSION'
+	,@recommended_value				CHAR(2)			= 'ON'
+	,@command_type					VARCHAR(50)		= 'ALTER TABLE (XML_COMPRESSION=ON)'
+	,@log_to_table					CHAR(1)			= 'Y'
+	,@debug_only					CHAR(1)			= 'N'
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
