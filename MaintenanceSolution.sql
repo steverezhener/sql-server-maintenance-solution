@@ -2060,7 +2060,13 @@ BEGIN
     SELECT 'The value for the parameter @Encrypt is not supported.', 16, 1
   END
 
-  IF @Encrypt = 'Y' AND @BackupSoftware IS NULL AND NOT (@Version >= 12 AND (SERVERPROPERTY('EngineEdition') IN(3, 8) OR SERVERPROPERTY('EditionID') IN(-1534726760, 284895786)))
+  IF @Encrypt = 'Y' 
+      AND NOT (@Version >= 12 
+			AND (
+				SERVERPROPERTY('EngineEdition') IN(2, 3, 8)	-- Standard, Enterprise (For Enterprise, Enterprise Developer, Developer, and Evaluation editions.), Azure SQL Managed Instance
+				OR 
+				SERVERPROPERTY('EditionID') IN(-1534726760, 284895786) -- Standard, Business Intelligence 
+				)
   BEGIN
     INSERT INTO @Errors ([Message], Severity, [State])
     SELECT 'The value for the parameter @Encrypt is not supported.', 16, 2
@@ -9512,4 +9518,5 @@ BEGIN
   DEALLOCATE JobCursor
 END
 GO
+
 
